@@ -13,14 +13,12 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeoutException;
 
 public class RPCClient {
-
   private Connection connection;
   private Channel channel;
   private String requestQueueName = "rpc_queue";
   private String replyQueueName;
 
-  public RPCClient() throws IOException, TimeoutException {
-	  
+  public RPCClient() throws IOException, TimeoutException {	  
 	  String host="192.168.100.89";
       String virtualHost = "/";
       String username = "openstack";

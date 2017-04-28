@@ -1,19 +1,16 @@
 package simplequeues;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
-
+import com.rabbitmq.client.Channel;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
-
-import com.rabbitmq.client.Channel;
 
 public class SimpleSend {
 	public static void main(String[] args) throws IOException, TimeoutException {
 		String host="192.168.100.89";
     	String virtualHost = "/";
     	String username = "openstack";
-    	String password = "123456";
-    	
+    	String password = "123456";    	
     	String QUEUE_NAME="hello";
 		
 		ConnectionFactory factory = new ConnectionFactory();
@@ -33,5 +30,4 @@ public class SimpleSend {
 		channel.close();
 		connection.close();		
 	}
-
 }

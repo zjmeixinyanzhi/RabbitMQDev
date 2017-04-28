@@ -22,11 +22,9 @@ public class ReceiveLogs {
           
 	      channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
 	      String queueName = channel.queueDeclare().getQueue();
-	      channel.queueBind(queueName, EXCHANGE_NAME, "");
-	      
+	      channel.queueBind(queueName, EXCHANGE_NAME, "");	      
           
-	      System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
-          
+	      System.out.println(" [*] Waiting for messages. To exit press CTRL+C");          
 	      Consumer consumer = new DefaultConsumer(channel) {
 	        @Override
 	        public void handleDelivery(String consumerTag, Envelope envelope,

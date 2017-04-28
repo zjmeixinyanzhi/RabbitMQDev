@@ -31,8 +31,7 @@ public class EmitLogTopic {
 	        String message = getMessage(argv);
          
 	        channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
-	        System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
-         
+	        System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");         
 	      }
 	      catch  (Exception e) {
 	        e.printStackTrace();

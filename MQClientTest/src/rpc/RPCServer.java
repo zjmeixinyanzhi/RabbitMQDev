@@ -13,13 +13,11 @@ import java.util.concurrent.TimeoutException;
 public class RPCServer {
 
   private static final String RPC_QUEUE_NAME = "rpc_queue";
-
   private static int fib(int n) {
     if (n == 0) return 0;
     if (n == 1) return 1;
     return fib(n-1) + fib(n-2);
   }
-
   public static void main(String[] argv) {
 	  String host="192.168.100.89";
       String virtualHost = "/";
@@ -37,11 +35,8 @@ public class RPCServer {
     try {
       connection      = factory.newConnection();
       Channel channel = connection.createChannel();
-
       channel.queueDeclare(RPC_QUEUE_NAME, false, false, false, null);
-
       channel.basicQos(1);
-
       System.out.println(" [x] Awaiting RPC requests");
 
       Consumer consumer = new DefaultConsumer(channel) {
@@ -51,7 +46,6 @@ public class RPCServer {
                   .Builder()
                   .correlationId(properties.getCorrelationId())
                   .build();
-
           String response = "";
 
           try {
@@ -66,12 +60,10 @@ public class RPCServer {
           }
           finally {
             channel.basicPublish( "", properties.getReplyTo(), replyProps, response.getBytes("UTF-8"));
-
             channel.basicAck(envelope.getDeliveryTag(), false);
           }
         }
       };
-
       channel.basicConsume(RPC_QUEUE_NAME, false, consumer);
 
       //loop to prevent reaching finally block

@@ -1,13 +1,11 @@
 package routing;
-
 import com.rabbitmq.client.*;
 import java.io.IOException;
 
 public class ReceiveLogsDirect {
 	  private static final String EXCHANGE_NAME = "direct_logs";
 
-	  public static void main(String[] argv) throws Exception {
-		  
+	  public static void main(String[] argv) throws Exception {		  
 		  String host="192.168.100.89";
 	      String virtualHost = "/";
 	      String username = "openstack";
@@ -45,5 +43,4 @@ public class ReceiveLogsDirect {
 	      };
 	      channel.basicConsume(queueName, true, consumer);
 	  }
-
 }

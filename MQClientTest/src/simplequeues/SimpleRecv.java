@@ -1,18 +1,15 @@
 package simplequeues;
-
 import com.rabbitmq.client.*;
 import java.io.IOException;
 
 public class SimpleRecv {
 	
 	 private final static String QUEUE_NAME = "hello";
-
-	  public static void main(String[] argv) throws Exception {
+	 public static void main(String[] argv) throws Exception {
 		  String host="192.168.100.89";
 	      String virtualHost = "/";
 	      String username = "openstack";
-	      String password = "123456";
-		  
+	      String password = "123456";		  
 		
           ConnectionFactory factory = new ConnectionFactory();
           factory.setHost(host);
@@ -36,5 +33,4 @@ public class SimpleRecv {
 	      };
 	      channel.basicConsume(QUEUE_NAME, true, consumer);
 	  }
-
 }

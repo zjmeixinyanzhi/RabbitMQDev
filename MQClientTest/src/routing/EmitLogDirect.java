@@ -58,6 +58,4 @@ public class EmitLogDirect {
 	    }
 	    return words.toString();
 	  }
-	
-
 }
