@@ -15,7 +15,6 @@ public class ThreadsTest extends Thread {
 			e.printStackTrace();
 		}	
 	}
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,10 +30,6 @@ public class ThreadsTest extends Thread {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-
 	}
 
 }

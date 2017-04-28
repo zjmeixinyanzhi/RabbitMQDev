@@ -12,42 +12,39 @@ public class EmitLogTopic {
 	      String virtualHost = "/";
 	      String username = "openstack";
 	      String password = "123456";
-
-	    
 		  
-		  
-	    Connection connection = null;
-	    Channel channel = null;
-	    try {
-	    	
-	      ConnectionFactory factory = new ConnectionFactory();
-	      factory.setHost(host);
-          factory.setVirtualHost(virtualHost);
-          factory.setUsername(username);
-  		  factory.setPassword(password);
-	      connection = factory.newConnection();
-	      channel = connection.createChannel();
-
-	      channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
-
-	      String routingKey = getRouting(argv);
-	      String message = getMessage(argv);
-
-	      channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
-	      System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
-
-	    }
-	    catch  (Exception e) {
-	      e.printStackTrace();
-	    }
-	    finally {
-	      if (connection != null) {
-	        try {
-	          connection.close();
-	        }
-	        catch (Exception ignore) {}
+	      Connection connection = null;
+	      Channel channel = null;
+	      try {
+	      	
+	        ConnectionFactory factory = new ConnectionFactory();
+	        factory.setHost(host);
+            factory.setVirtualHost(virtualHost);
+            factory.setUsername(username);
+  	  	   factory.setPassword(password);
+	        connection = factory.newConnection();
+	        channel = connection.createChannel();
+         
+	        channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
+         
+	        String routingKey = getRouting(argv);
+	        String message = getMessage(argv);
+         
+	        channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
+	        System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
+         
 	      }
-	    }
+	      catch  (Exception e) {
+	        e.printStackTrace();
+	      }
+	      finally {
+	        if (connection != null) {
+	          try {
+	            connection.close();
+	          }
+	          catch (Exception ignore) {}
+	        }
+	      }
 	  }
 
 	  private static String getRouting(String[] strings){
